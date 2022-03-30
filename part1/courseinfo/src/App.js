@@ -1,4 +1,32 @@
 
+  const Part = (props) => {
+    return (
+      <p>
+        {props.name} {props.exercises}
+      </p>
+    );
+  };
+
+  const Header = (props) => {
+    return <h1>{props.course}</h1>;
+  };
+
+  const Content = ({ parts }) => {
+    const newParts = parts.map((item) => <Part name={item.name} exercises={item.exercises} />)
+
+    return (
+      <div>
+        {newParts}
+      </div>
+    )
+  };
+
+  const Total = ({ parts }) => {
+    const [ ex1, ex2, ex3 ] = parts;
+    return <p>Number of exercises {ex1.exercises + ex2.exercises + ex3.exercises}</p>;
+  };
+
+
 function App() {
   const course = {
     name: 'Half Stack application development',
@@ -53,32 +81,6 @@ function App() {
   //   }
   // ]
 
-  const Part = (props) => {
-    return (
-      <p>
-        {props.name} {props.exercises}
-      </p>
-    );
-  };
-
-  const Header = (props) => {
-    return <h1>{props.course}</h1>;
-  };
-
-  const Content = ({ parts }) => {
-    const newParts = parts.map((item) => <Part name={item.name} exercises={item.exercises} />)
-
-    return (
-      <div>
-        {newParts}
-      </div>
-    )
-  };
-
-  const Total = ({ parts }) => {
-    const [ ex1, ex2, ex3 ] = parts;
-    return <p>Number of exercises {ex1.exercises + ex2.exercises + ex3.exercises}</p>;
-  };
 
   return (
     <div>
