@@ -1,4 +1,4 @@
-const Persons = ({ newFilter, filterArr, persons }) => {
+const Persons = ({ newFilter, filterArr, persons, onClick }) => {
 
     return (
       <div>
@@ -6,12 +6,16 @@ const Persons = ({ newFilter, filterArr, persons }) => {
           ? persons.map(({ id, name, number }) => (
               <p key={id}>
                 {name} {number}
+                <button onClick={() => onClick(id)}>delete</button>
               </p>
             ))
           : filterArr.map(({ id, name, number }) => (
-              <p key={id}>
-                {name} {number}
-              </p>
+              <div key={id}>
+                <p>
+                  {name} {number}
+                </p>
+                <button onClick={onClick}>delete</button>
+              </div>
             ))}
       </div>
     );
